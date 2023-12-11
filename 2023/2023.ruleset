@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="DevOps Scanner Rules" Description="Hand selected set of analyzer rules for use within the DevOps Scanner project." ToolsVersion="15.0">
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
+    <Rule Id="SA1101" Action="None" />
+    <Rule Id="SA1309" Action="None" />
+  </Rules>
+</RuleSet>

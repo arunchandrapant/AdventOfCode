@@ -1,5 +1,7 @@
-﻿// See https://aka.ms/new-console-template for more information
-using System.IO;
+﻿// <copyright file="Program.cs" company="Arun Pant">
+// Copyright (c) Arun Pant. All rights reserved.
+// </copyright>
+
 using System.Reflection;
 
 // Get the current assembly's location
@@ -9,7 +11,7 @@ string path = Assembly.GetExecutingAssembly().Location;
 string? directory = Path.GetDirectoryName(path);
 
 // Combine the directory with the relative path of the file
-string filePath = Path.Combine(directory ?? "", "./data/input");
+string filePath = Path.Combine(directory ?? string.Empty, "./data/input");
 
 string[] caliberationLines = File.ReadAllLines(filePath);
 
@@ -26,7 +28,6 @@ foreach (var caliberationLine in caliberationLines)
 
 Console.WriteLine($"Sum of caliberation values: {caliberationValueSum}");
 Console.WriteLine($"Sum of caliberation values with num words: {caliberationValueWithNumWordsSum}");
-
 
 static int? GetCaliberationValue(string caliberationLine)
 {
@@ -57,7 +58,7 @@ static int GetCaliberationValueWithNumWords(string caliberationLine)
 
     maxPosition = digitTuple.Last().index;
     lastDigit = int.Parse(digitTuple.Last().value.ToString());
-    
+
     var numWordMap = new Dictionary<int, string>
     {
         { 0, "zero" },
@@ -69,7 +70,7 @@ static int GetCaliberationValueWithNumWords(string caliberationLine)
         { 6, "six" },
         { 7, "seven" },
         { 8, "eight" },
-        { 9, "nine" }
+        { 9, "nine" },
     };
 
     foreach (var numWord in numWordMap)

@@ -1,6 +1,7 @@
-﻿// See https://aka.ms/new-console-template for more information
-using System.ComponentModel.DataAnnotations;
-using System.IO;
+﻿// <copyright file="Program.cs" company="Arun Pant">
+// Copyright (c) Arun Pant. All rights reserved.
+// </copyright>
+
 using System.Reflection;
 
 // Get the current assembly's location
@@ -10,7 +11,7 @@ string path = Assembly.GetExecutingAssembly().Location;
 string? directory = Path.GetDirectoryName(path);
 
 // Combine the directory with the relative path of the file
-string filePath = Path.Combine(directory ?? "", "./data/input");
+string filePath = Path.Combine(directory ?? string.Empty, "./data/input");
 
 string[] games = File.ReadAllLines(filePath);
 
@@ -38,12 +39,9 @@ foreach (var game in games)
             .Trim()
             .Split(" "))
         .Select(cubes =>
-            (
-                int.Parse(cubes.First()),
-                cubes.Last()
-            )
-        ));
-    
+            (int.Parse(cubes.First()),
+            cubes.Last())));
+
     if (IsGameValid(gameDraws))
     {
         sumOfIdsOfValidGames += gameId;
@@ -110,7 +108,7 @@ static bool IsDrawValid(IEnumerable<(int, string)> draw)
     };
 
     var drawValid = true;
-    
+
     foreach ((int count, string color) in draw)
     {
         if (cubesInBag[color] < count)
